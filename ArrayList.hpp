@@ -9,16 +9,15 @@
 #ifndef ArrayList_hpp
 #define ArrayList_hpp
 
-#include <stdio.h>
 #include <iostream>
 #include <string>
 using namespace std;
 
-template<typename T, int S> class arrayList
+template<typename T> class arrayList
 {
 public:
     
-    arrayList();
+    arrayList(int startSize);
     ~arrayList();
     inline int getSize();
     inline T* getArray();

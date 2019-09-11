@@ -9,41 +9,51 @@
 #include "ArrayList.hpp"
 using namespace std;
 
-template<typename T, int S>
-arrayList<T,S>::arrayList()
+template<typename T>
+arrayList<T>::arrayList(int startSize)
 {
-    if(S<1)
-    {
+/*
+Description: creates list with specified legth and class
+ */
+    if(startSize<1)
+    { 
         array = new T(1);
         size=1;
         occupied=0;
     }
     else
     {
-        array = new T(S);
-        size=S;
+        array = new T(startSize);
+        size=startSize;
         occupied=0;
     }
     
 }
 
-template<typename T, int S>
-arrayList<T,S>::~arrayList()
+template<typename T>
+arrayList<T>::~arrayList()
 {
+/*
+Description: Destroys array
+ */
     delete [] array;
     array= nullptr;
 }
 
-template<typename T, int S>
-inline int arrayList<T,S>::getSize(){return size;}
+template<typename T> 
+inline int arrayList<T>::getSize(){return size;}
 
-template<typename T, int S>
-inline T* arrayList<T,S>::getArray(){return array;}
+template<typename T>
+inline T* arrayList<T>::getArray(){return array;}
 
 
-template<typename T, int S>
-void arrayList<T,S>::add(T element)
+template<typename T>
+void arrayList<T>::add(T element)
 {
+/*
+Description: adds an element to the list, checking if this addition goes beyond 
+the current limit of the array we increase the arrays length 
+*/
     if(size-1==occupied)
     {
         T* temp= array;
@@ -60,15 +70,17 @@ void arrayList<T,S>::add(T element)
     }
     else
     {
-       
         array[occupied]= element;
          occupied++;
     }
 }
 
-template<typename T, int S>
-T arrayList<T,S>::removeLast()
+template<typename T>
+T arrayList<T>::removeLast()
 {
+/*
+Description: removes the last element of the list
+*/
     T* temp = nullptr;
     *temp= array[occupied];
     array[occupied]= NULL; //check if this is the best way to do this
@@ -76,9 +88,12 @@ T arrayList<T,S>::removeLast()
     return *temp;
 }
 
-template<typename T, int S>
-T arrayList<T,S>::removeElement(int index)
+template<typename T>
+T arrayList<T>::removeElement(int index)
 {
+/*
+Description: removes the element at a specified index
+*/
     T* temp = nullptr;
     *temp= array[occupied];
     array[index] = array[occupied];
@@ -87,30 +102,15 @@ T arrayList<T,S>::removeElement(int index)
     return *temp;
 }
 
-template<typename T, int S>
-void arrayList<T,S>::display()
+template<typename T>
+void arrayList<T>::display()
 {
+/*
+Description: displays the entire list
+*/
     for(int i =0; i<occupied; i++)
     {
         cout<<array[i]<<endl;
     }
 }
 
-template class arrayList<int, 10>;
-
-class a
-{
-public:
-    int size;
-    a(int i): size(i){}
-    int getsize(){return size;}
-    int getsizee()const {return size;}
-};
-
-
-int main()
-{
-    const a ob(3);
-    ob.getsize();
-  
-}
