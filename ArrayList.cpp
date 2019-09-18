@@ -37,7 +37,7 @@ arrayList<T>::~arrayList()
 Description: Destroys array
  */
     delete [] array;
-    array= nullptr;
+    array= NULL;
 }
 
 template<typename T> 
@@ -66,7 +66,7 @@ the current limit of the array we increase the arrays length
         occupied++;
         size=size*2;
         delete [] temp;
-        temp=nullptr;
+        temp=NULL;
     }
     else
     {
@@ -81,7 +81,7 @@ T arrayList<T>::removeLast()
 /*
 Description: removes the last element of the list
 */
-    T* temp = nullptr;
+    T* temp = NULL;
     *temp= array[occupied];
     array[occupied]= NULL; //check if this is the best way to do this
     occupied--;
@@ -94,7 +94,7 @@ T arrayList<T>::removeElement(int index)
 /*
 Description: removes the element at a specified index
 */
-    T* temp = nullptr;
+    T* temp = NULL;
     *temp= array[occupied];
     array[index] = array[occupied];
     array[occupied]= NULL;
